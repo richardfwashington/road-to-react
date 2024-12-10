@@ -1,8 +1,8 @@
 import './App.css'
 
-function App() {
-  const title = 'React';
+const title = 'React';
 
+function App() {
   return (
     <>
       <div>
