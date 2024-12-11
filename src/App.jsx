@@ -5,6 +5,25 @@ const welcome = {
   title: 'React'
 };
 
+const list = [
+  {
+    title: 'React',
+    url: 'https://reactjs.org/',
+    author: 'Jordan Walke',
+    num_comments: 3,
+    points: 4,
+    objectID: 0
+  },
+  {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Dan Abramov, Andrew Clark',
+    num_comments: 2,
+    points: 5,
+    objectID: 1
+  }
+];
+
 function description(title) {
   return `This is a simple ${title} app that uses JSX.`;
 }
@@ -17,6 +36,14 @@ function App() {
         <label htmlFor="search">Search: </label>
         <input id="search" type="text" />
         <p>{description(welcome.title)}</p>
+        <hr />
+        <ul>
+          {
+          list.map((item) => {
+            return <li key={item.objectID}>{item.title}</li>;
+          })
+        }
+        </ul>
       </div>
     </>
   )
