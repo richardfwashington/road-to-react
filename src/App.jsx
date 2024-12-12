@@ -6,10 +6,6 @@ const welcome = {
   title: "React",
 };
 
-function description(title) {
-  return `This is a simple ${title} app that uses JSX.`;
-}
-
 const App = () => {
   const stories = [
     {
@@ -64,13 +60,8 @@ const Search = () => {
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      <input
-        id="search"
-        type="text"
-        onChange={handleChange}
-        value={searchTerm}
-      />
-      <p>{description(welcome.title)}</p>
+      <input id="search" type="text" onChange={handleChange} />
+      <p>Searching for {searchTerm}</p>
     </div>
   );
 };
