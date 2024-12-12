@@ -1,4 +1,5 @@
 import "./App.css";
+import * as React from "react";
 
 const welcome = {
   greeting: "Hey",
@@ -52,15 +53,23 @@ const List = (props) => (
 );
 
 const Search = () => {
+  const [searchTerm, setSearchTerm] = React.useState("");
+
   const handleChange = (event) => {
     console.log(event);
     console.log(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      <input id="search" type="text" onChange={handleChange} />
+      <input
+        id="search"
+        type="text"
+        onChange={handleChange}
+        value={searchTerm}
+      />
       <p>{description(welcome.title)}</p>
     </div>
   );
