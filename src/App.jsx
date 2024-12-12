@@ -26,13 +26,17 @@ const App = () => {
     },
   ];
 
+  const handleSearch = (event) => {
+    console.log(event.target.value);
+  };
+
   return (
     <>
       <div>
         <h1>
           {welcome.greeting} {welcome.title}
         </h1>
-        <Search />
+        <Search onSearch={handleSearch} />
         <hr />
         <List list={stories} />
       </div>
@@ -48,13 +52,12 @@ const List = (props) => (
   </ul>
 );
 
-const Search = () => {
+const Search = (props) => {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const handleChange = (event) => {
-    console.log(event);
-    console.log(event.target.value);
     setSearchTerm(event.target.value);
+    props.onSearch(event);
   };
 
   return (
