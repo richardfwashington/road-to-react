@@ -28,7 +28,7 @@ function description(title) {
   return `This is a simple ${title} app that uses JSX.`;
 }
 
-function App() {
+const App = () => {
   return (
     <>
       <div>
@@ -41,9 +41,9 @@ function App() {
       </div>
     </>
   );
-}
+};
 
-function List() {
+const List = () => {
   return (
     <ul>
       {list.map((item) => {
@@ -60,9 +60,9 @@ function List() {
       })}
     </ul>
   );
-}
+};
 
-function Search() {
+const Search = () => {
   return (
     <div>
       <label htmlFor="search">Search: </label>
@@ -70,6 +70,6 @@ function Search() {
       <p>{description(welcome.title)}</p>
     </div>
   );
-}
+};
 
 export default App;
