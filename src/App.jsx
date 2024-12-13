@@ -7,13 +7,7 @@ const welcome = {
 };
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem("search") || "React"
-  );
-
-  React.useEffect(() => {
-    localStorage.setItem("search", searchTerm);
-  }, [searchTerm]);
+  const [searchTerm, setSearchTerm] = useStorageState("React");
 
   const stories = [
     {
@@ -84,5 +78,17 @@ const Item = ({ title, url, author, num_comments, points }) => (
     <span>{points} </span>
   </li>
 );
+
+const useStorageState = (initialState) => {
+  const [searchTerm, setSearchTerm] = React.useState(
+    localStorage.getItem("search") || initialState
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem("search", searchTerm);
+  }, [searchTerm]);
+
+  return [searchTerm, setSearchTerm];
+};
 
 export default App;
