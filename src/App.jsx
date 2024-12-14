@@ -38,15 +38,13 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <h1>
-          {welcome.greeting} {welcome.title}
-        </h1>
-        <p>Filter: {searchTerm}</p>
-        <Search onSearch={handleSearch} search={searchTerm} />
-        <hr />
-        <List list={searchedStories} />
-      </div>
+      <h1>
+        {welcome.greeting} {welcome.title}
+      </h1>
+      <p>Filter: {searchTerm}</p>
+      <Search onSearch={handleSearch} search={searchTerm} />
+      <hr />
+      <List list={searchedStories} />
     </>
   );
 };
@@ -61,10 +59,10 @@ const List = ({ list }) => (
 
 const Search = ({ search, onSearch }) => {
   return (
-    <div>
+    <>
       <label htmlFor="search">Search: </label>
       <input id="search" type="text" value={search} onChange={onSearch} />
-    </div>
+    </>
   );
 };
 
