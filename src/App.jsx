@@ -102,10 +102,6 @@ const InputWithLabel = ({
 };
 
 const Item = ({ item, onDelete }) => {
-  const handleDelete = () => {
-    onDelete(item.objectID);
-  };
-
   return (
     <li>
       <span>
@@ -114,7 +110,7 @@ const Item = ({ item, onDelete }) => {
       <span>{item.author} </span>
       <span>{item.num_comments} </span>
       <span>{item.points} </span>
-      <button type="button" onClick={handleDelete}>
+      <button type="button" onClick={() => onDelete(item.objectID)}>
         Delete
       </button>
     </li>
