@@ -36,6 +36,8 @@ const getAsyncStories = () => {
 const storiesReducer = (state, action) => {
   if (action.type === "SET_STORIES") {
     return action.payload;
+  } else if (action.type === "REMOVE_STORY") {
+    return state.filter((story) => action.payload !== story.objectID);
   } else {
     throw new Error();
   }
@@ -69,9 +71,7 @@ const App = () => {
   );
 
   const deleteStory = (id) => {
-    const newStories = stories.filter((story) => story.objectID !== id);
-
-    dispatchStories({ type: "SET_STORIES", payload: newStories });
+    dispatchStories({ type: "REMOVE_STORY", payload: id });
   };
 
   return (
