@@ -24,13 +24,19 @@ const initialStories = [
     objectID: 1,
   },
 ];
-const getAsyncStories = () => {
+/*const getAsyncStories = () => {
   return new Promise((resolve) =>
     setTimeout(() => resolve({ data: { stories: initialStories } }), 2000)
   );
+};*/
+
+const getAsyncStories = () => {
+  console.log(initialStories);
+  return new Promise((resolve, reject) => setTimeout(reject, 2000));
 };
 
 const storiesReducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case "STORIES_FETCH_INIT":
       return { ...state, isLoading: true, isError: false };
@@ -49,7 +55,7 @@ const storiesReducer = (state, action) => {
         data: state.data.filter((story) => action.payload !== story.objectID),
       };
     default:
-      throw new Error();
+      throw new Error("Failed");
   }
 };
 
@@ -65,15 +71,12 @@ const App = () => {
     dispatchStories({ type: "STORIES_FETCH_INIT" });
 
     getAsyncStories()
-      .then(
-        (result) => {
-          dispatchStories({
-            type: "STORIES_FETCH_SUCCESS",
-            payload: result.data.stories,
-          });
-        },
-        () => console.error("Error")
-      )
+      .then((result) => {
+        dispatchStories({
+          type: "STORIES_FETCH_SUCCESS",
+          payload: result.data.stories,
+        });
+      })
       .catch(() => dispatchStories({ type: "STORIES_FETCH_FAILURE" }));
   }, []);
 
