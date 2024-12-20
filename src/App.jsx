@@ -24,16 +24,16 @@ const initialStories = [
     objectID: 1,
   },
 ];
-/*const getAsyncStories = () => {
+const getAsyncStories = () => {
   return new Promise((resolve) =>
     setTimeout(() => resolve({ data: { stories: initialStories } }), 2000)
   );
-};*/
+};
 
-const getAsyncStories = () => {
+/*const getAsyncStories = () => {
   console.log(initialStories);
   return new Promise((resolve, reject) => setTimeout(reject, 2000));
-};
+};*/
 
 const storiesReducer = (state, action) => {
   console.log(action);
